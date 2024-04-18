@@ -1,0 +1,28 @@
+/**
+ * @author Sam4uk
+ * @brief
+ * @version 0.1
+ * @date 2024-04-04
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSave": "onFocusChange",
+		"editor.rulers": [
+			80,
+			72
+		],
+		"C_Cpp.default.defines": [],
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"workbench.colorTheme": "Kimbie Dark"
+	}
+}
