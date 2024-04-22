@@ -1,6 +1,6 @@
 /**
  * @file Filter.Easy.hpp
- * @author Sam4uk (Sam4uk@gmail.com)
+ * @author Sam4uk (Sam4uk.site@gmail.com)
  * @brief
  * @version 0.1
  * @date 2024-04-18
@@ -47,12 +47,12 @@ public:
    * @return T
    */
   T operator()(T value) override final {
-    acum += value;
-    ++count;
-    if (count >= _range) {
-      _avarenge = acum / count;
-      count = 0;
-      acum = 0;
+    _acum += value;
+    ++_count;
+    if (_count >= _range) {
+      _avarenge = _acum / _count;
+      _count = 0;
+      _acum = 0;
     }
     return _avarenge;
   };
@@ -60,11 +60,11 @@ public:
 private:
   unsigned       //
       _range{1}, ///<
-      count{};   ///<
+      _count{};  ///<
 
   T                //
       _avarenge{}, ///<
-      acum{};      ///<
+      _acum{};     ///<
 };
 /**
  * @brief
@@ -101,7 +101,7 @@ public:
   T operator()(T value) override final {
     if (millis() - _filter_timer > _time_step) {
       _filter_timer = millis();
-      _value = value * _coefficient + _value * (1 - _coefficient);
+      _value = value * _coefficient + _value * (1. - _coefficient);
     }
     return _value;
   }
@@ -112,7 +112,8 @@ private:
       _time_step{};    ///<
 
   T                     //
-      _value{},         ///<
+      _value{};         ///<
+  float                 //
       _coefficient{1.}; ///<
 };
 
@@ -133,7 +134,7 @@ public:
     _values[_index++] = value;
     if (_index >= _3_)
       _index = 0;
-    T middle;
+    T middle{};
     if ((_values[_a_] <= _values[_b_]) and (_values[_a_] <= _values[_c_]))
       middle = (_values[_b_] <= _values[_c_]) ? _values[_b_] : _values[_c_];
     else if ((_values[_b_] <= _values[_a_]) and (_values[_b_] <= _values[_c_]))
